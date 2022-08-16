@@ -29,7 +29,7 @@ log = logging.getLogger(__name__)
 
 
 class ChallengeCog(commands.Cog):
-    TIME_OUT_MINUTES = 1
+    TIME_OUT_MINUTES = 3
 
     def __init__(self, bot: 'ChallengeBot'):
         self.bot = bot
@@ -198,7 +198,6 @@ class ChallengeCog(commands.Cog):
     async def on_new_challenge(self, message: discord.Message, match_type: str):
         """A new challenge message was detected in the chat"""
         await self.create_new_challenge(message, match_type)
-        await message.channel.send(f"This is a placeholder to show I received the message. Timeout is currently {self.TIME_OUT_MINUTES} minute")
         await discord.utils.sleep_until(datetime.now(timezone.utc) + timedelta(minutes=self.TIME_OUT_MINUTES))
         challenge = self.challenges.get(message.id)
         if challenge is None:
@@ -227,7 +226,7 @@ class ChallengeCog(commands.Cog):
     async def on_challenge_accepted(self, challenge: Challenge, message: discord.Message):
         """Fires when a person accepts a challenge. Records the challenge to the database"""
         await self.answer_challenge(challenge, message.author)
-        await message.channel.send(f"I see you! {message.author.mention}")
+        await message.channel.send(f"Order Assigned! {message.author.mention}")
 
     @commands.Cog.listener()
     async def on_guild_role_delete(self, role: discord.Role):
