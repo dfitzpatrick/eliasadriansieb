@@ -24,6 +24,7 @@ class CoreCog(commands.Cog):
             /set-role -- Add/Remove a role to ping for a match type
             /open -- Shows Open Challenges
             /list-roles -- Lists pinged roles for a amtch type
+            /history -- Shows history for completed matches
         """)
         embed = discord.Embed(title=title, description=description)
 

@@ -31,13 +31,10 @@ class LongDescriptionPaginator(paginator.Paginator):
                 page_content = ""
             page_content += line + '\n'
 
-
-
     async def get_page_count(self, interaction: Interaction) -> int:
         return len(self.entries)
 
     async def get_page_content(self, interaction: Interaction, page: int) -> Dict[str, Any]:
         return {
-
             "embed": (discord.Embed(title=self.title, description=self.entries[page]))
         }

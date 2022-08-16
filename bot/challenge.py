@@ -12,7 +12,6 @@ from data import crud
 from data.crud import insert_challenge, respond_to_challenge, Challenge, MatchTypeRole, create_match_type_role, \
     delete_match_type_role, fetch_challenge
 from .common import td_format, send_safe_embed
-from .pagination import LongDescriptionPaginator
 
 if TYPE_CHECKING:
     from .bot import ChallengeBot

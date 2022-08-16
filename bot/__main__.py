@@ -1,9 +1,11 @@
-import discord
-import os
-from discord.ext import commands
 import asyncio
 import logging
+import os
+
+import discord
+
 from .bot import ChallengeBot
+
 log = logging.getLogger(__name__)
 
 
