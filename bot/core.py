@@ -21,7 +21,9 @@ class CoreCog(commands.Cog):
             """For further help, use /cmd and see the hints that discord provides
 
             **Available Commands**
-          
+            /set-role -- Add/Remove a role to ping for a match type
+            /open -- Shows Open Challenges
+            /list-roles -- Lists pinged roles for a amtch type
         """)
         embed = discord.Embed(title=title, description=description)
 

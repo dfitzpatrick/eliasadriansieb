@@ -3,14 +3,10 @@ import os
 from discord.ext import commands
 import asyncio
 import logging
-
+from .bot import ChallengeBot
 log = logging.getLogger(__name__)
 
-extensions = (
-    'bot.core',
-    'bot.profitability',
-    'bot.sticky_embed',
-)
+
 
 def bot_task_callback(future: asyncio.Future):
     if future.exception():
@@ -22,16 +18,12 @@ async def run_bot():
     intents = discord.Intents.all()
     intents.message_content = True
     intents.members = True
-    bot = commands.Bot(
+    bot = ChallengeBot(
         intents=intents,
         command_prefix='!',
         slash_commands=True,
     )
     try:
-        for ext in extensions:
-            await bot.load_extension(ext)
-            log.debug(f"Extension {ext} loaded")
-
         await bot.start(token)
     finally:
         await bot.close()
